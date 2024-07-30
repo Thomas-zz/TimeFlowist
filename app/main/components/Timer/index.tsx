@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button, Input } from "antd"
 import useProjectStore from "../../stores"
+import MainInput from "./component/MainInput"
 
 export default function Component() {
   const [time, setTime] = useState(0)
@@ -43,7 +44,7 @@ export default function Component() {
 
     <div className="p-4 bg-white rounded-lg shadow-md">
       <div className="flex items-center space-x-4">
-        <Input ></Input>
+        <MainInput/>
         <div className="p-4 text-2xl font-bold bg-gray-200 rounded-md">{formatTime(time)}</div>
         <Button onClick={() => handleBtnClick(isRunning)}>{isRunning ? '暂停' : '开始'}</Button>
       </div>
