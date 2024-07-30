@@ -1,5 +1,5 @@
 import { Input } from "antd";
-import { useReducer } from "react";
+import React, { useReducer } from "react";
 
 type State = {
   matters: string;
@@ -28,13 +28,20 @@ const initialState: State = {
 };
 
 const MainInput  = () => {
-
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      console.log('Enter key was pressed');
+    }
+  };
+
   return (
     <div>
       <Input 
         value={state.matters} 
         onChange={(e) => dispatch({ type: "SET_MATTERS", payload: e.target.value })}
+        onKeyDown={handleKeyDown}
       />
     </div>
   );
